@@ -11,3 +11,4 @@ to the reusable workflow's repo, not this caller.
 
 1. Go to Actions → "call-greet" → Run workflow, or
 2. Open an issue in this repo.
+
