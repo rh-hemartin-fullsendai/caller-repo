@@ -1,0 +1,18 @@
+# Shim workflow — calls the reusable workflow in shared-workflows.
+# Modeled after fullsend's shim-per-repo pattern: thin caller that
+# forwards context to a reusable workflow in another repo.
+#
+# Tests that job.workflow_* in the reusable workflow points to
+# shared-workflows (not this repo).
+name: call-greet
+
+on:
+  issues:
+    types: [opened, labeled]
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    uses: rh-hemartin-fullsendai/shared-workflows/.github/workflows/reusable-greet.yml@master
+    with:
+      caller_info: "Called from ${{ github.repository }} on ${{ github.event_name }}"
